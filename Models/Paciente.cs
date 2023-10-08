@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace SMWebApp.Models
 {
@@ -6,23 +7,34 @@ namespace SMWebApp.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Preencha o nome.")]
         public string Nome { get; set; }
         public string Email { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Preencha o Whatsapp")]
         public string WhatsApp { get; set; }
-        [Required]
-        public string CPF{ get; set; }
-        public bool EmiteRecibo { get; set; }
-        public bool EmiteReciboIR { get; set; }
-        public bool EmiteReciboConvenio { get; set; }
-        public bool Ativo { get; set; }
+        [Required(ErrorMessage = "Preencha o CPF")]
+        
+        public string CPF { get; set; }
+
+        public bool EmiteRecibo { get; set; } = false;
+
+        public bool EmiteReciboIR { get; set; } = false;
+
+        public bool EmiteReciboConvenio { get; set; } = false;
+        [AllowNull]
+        public bool Ativo { get; set; } = true;
+
         public DateTime Aniversario { get; set; }
         public bool EnviaMsgAniversario { get; set; }
+
+        [AllowNull]
         public string CIDHD { get; set; }
+        [AllowNull]
         public string Observacao { get; set; }
+        [AllowNull]
         public DateTime DtHrCad { get; set; } = DateTime.Now;
-        public DateTime DtHrAlt { get; set; }
+        [AllowNull]
+        public DateTime DtHrAlt { get; set; } = DateTime.Now;
 
     }
 }

@@ -1,9 +1,12 @@
-﻿namespace SMWebApp.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace SMWebApp.Models
 {
     public class Recibo
     {
         public int Id { get; set; }
         public string CPFPaciente { get; set; }
+        [Column(TypeName ="decimal(18,2)")]
         public Decimal Valor { get; set; }
         public string ValorExtenso { get; set; }
         public DateTime DtConsulta { get; set; }
