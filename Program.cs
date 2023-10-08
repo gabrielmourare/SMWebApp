@@ -1,10 +1,15 @@
+using Microsoft.EntityFrameworkCore;
 using SMWebApp.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Configuration.AddJsonFile("D:\\Projects\\SMWebApp\\appsettings.Development.json");
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<SMWebDBContext>();
+builder.Services.AddDbContext<SMWebDBContext>(options => options.UseSqlServer(
+    builder.Configuration.GetConnectionString("DefaultConnection")
+    ));
+
 
 var app = builder.Build();
 

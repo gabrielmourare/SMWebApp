@@ -1,0 +1,64 @@
+﻿@model Paciente
+
+
+<form method="post" asp-action="ExcluirPaciente">
+    <input asp-for="Id" hidden/>
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2>Excluir Paciente</h2>
+            <hr />
+        </div>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Nome"></label>
+        <input asp-for="Nome" disabled class="form-control" />
+        <span asp-validation-for="Nome" class="text-danger"></span>
+
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="WhatsApp"></label>
+        <input asp-for="WhatsApp" disabled class="form-control" />
+        <span asp-validation-for="WhatsApp" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" disabled class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="CPF"></label>
+        <input asp-for="CPF" disabled class="form-control" id="txtCPF" maxlength="12" />
+        <span asp-validation-for="CPF" class="text-danger"></span>
+
+    </div>
+    <div class="mb-3">
+        <label asp-for="Aniversario">Data de Nascimento</label>
+        <input type="date" disabled asp-for="Aniversario" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <input type="checkbox" disabled asp-for="EmiteRecibo" />
+        <label asp-for="EmiteRecibo">Emite Recibo</label>
+    </div>
+    <div class="mb-3">
+        <input type="checkbox" disabled asp-for="EmiteReciboConvenio" />
+        <label asp-for="EmiteReciboConvenio">Recibo Convênio</label>
+    </div>
+    <div class="mb-3">
+        <input type="checkbox" disabled asp-for="EmiteReciboIR" />
+        <label asp-for="EmiteReciboIR">Recibo IR</label>
+    </div>
+    <div class="mb-3">
+        <input type="checkbox" disabled asp-for="EnviaMsgAniversario" />
+        <label asp-for="EnviaMsgAniversario">Envia Lembrete Aniversário</label>
+    </div>
+    <button type="submit" class="btn btn-danger" style="width:150px">Deletar</button>
+    <a asp-controller="Paciente" asp-action="Index" class="greyBtn" style="width:150px">Voltar</a>
+
+</form>
+
+@section Scripts{
+    @{
+    <partial name="_ValidationScriptsPartial" />
+     }
+    
+}

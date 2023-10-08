@@ -1,0 +1,140 @@
+﻿@model IEnumerable<Paciente>
+
+@{
+    ViewData["Title"] = "Index";
+
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h1>Pacientes</h1>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Paciente" asp-action="CadastrarPaciente" class="blueBtn">Cadastrar Paciente</a>
+        </div>
+    </div>
+    <br />
+
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    Paciente
+                </th>
+                <th>
+                    CPF
+                </th>
+                <th>
+                    Aniversário
+                </th>
+                <th>
+                    CID
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Ativo
+                </th>
+                <th>
+                    Recibo?
+                </th>
+                <th>
+                    Convenio?
+                </th>
+                <th>
+                    IR?
+                </th>
+                <th>
+                    Lembrete?
+                </th>
+                <th class="thIcon">
+                    
+                </th>
+                <th class="thIcon">
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td>
+                        @obj.Nome
+                    </td>
+                    <td>
+                        @obj.CPF
+                    </td>
+                    <td>
+                        @obj.Aniversario.ToString("dd/MM/yyyy")
+                    </td>
+                    <td>
+                        @obj.CIDHD
+                    </td>
+                    <td>
+                        @obj.Email
+                    </td>
+                    <td>
+                        @if (@obj.Ativo)
+                        {
+                            @:S
+                        }
+                        else
+                        {
+                            @:N
+                        }
+                    </td>
+                    <td>
+                        @if (@obj.EmiteRecibo)
+                        {
+                            @:S
+                        }
+                        else
+                        {
+                            @:N
+                        }
+                    </td>
+                    <td>
+                        @if (@obj.EmiteReciboConvenio)
+                        {
+                            @:S
+                        }
+                        else
+                        {
+                            @:N
+                        }
+                    </td>
+                    <td>
+                        @if (@obj.EmiteReciboIR)
+                        {
+                            @:S
+                        }
+                        else
+                        {
+                            @:N
+                        }
+                    </td>
+                    <td>
+                        @if (@obj.EnviaMsgAniversario)
+                        {
+                            @:S
+                        }
+                        else
+                        {
+                            @:N
+                        }
+                    </td>
+                    <td class="iconTd">
+                        <a asp-controller="Paciente" asp-action="EditarPaciente" asp-route-id="@obj.Id" ><img src="~/css/Icons/icons8-lápis-50.png" class="icons"> </a>
+                    </td>
+                    <td class="iconTd">
+                        <a asp-controller="Paciente" asp-action="ExcluirPacienteGET" asp-route-id="@obj.Id"><img src="~/css/Icons/icons8-remover-24.png" class="icons"> </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
